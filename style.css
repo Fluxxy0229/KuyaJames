@@ -6,16 +6,18 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, #1e1e2f, #302b63, #24243e);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .container {
     width: 100%;
-    padding: 20px;
     display: flex;
     justify-content: center;
 }
@@ -23,33 +25,35 @@ body {
 .lock-card {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
-    padding: 35px 25px;
+    padding: 30px 25px;
     border-radius: 20px;
     text-align: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     color: white;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 2;
 }
 
 .gif-wrapper {
-    width: 150px;
+    width: 120px;
     margin: 0 auto 15px auto;
 }
 
 .lock-card h1 {
-    font-size: 26px;
+    font-size: clamp(22px, 4vw, 30px);
     margin-bottom: 10px;
 }
 
 .greeting {
-    font-size: 14px;
+    font-size: clamp(13px, 3vw, 15px);
     margin-bottom: 5px;
     color: #ff9ecf;
 }
 
 .subtitle {
-    font-size: 13px;
+    font-size: clamp(12px, 2.8vw, 14px);
     opacity: 0.8;
     margin-bottom: 25px;
 }
@@ -62,8 +66,8 @@ body {
 }
 
 .pin-display span {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: rgba(255,255,255,0.3);
 }
@@ -79,10 +83,10 @@ body {
 }
 
 .keypad button {
-    padding: 18px;
+    padding: clamp(14px, 4vw, 20px);
     border-radius: 15px;
     border: none;
-    font-size: 18px;
+    font-size: clamp(16px, 4vw, 20px);
     background: rgba(255,255,255,0.15);
     color: white;
     cursor: pointer;
@@ -113,33 +117,13 @@ body {
     color: grey;
     font-weight: bold;
     margin-top: 15px;
-    font-size: 0.7rem;
+    font-size: clamp(11px, 2.5vw, 13px);
 }
 
 #message {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: clamp(13px, 3vw, 15px);
     min-height: 20px;
-}
-
-@media (max-width: 480px) {
-    .lock-card {
-        padding: 30px 20px;
-    }
-
-    .gif-wrapper {
-        width: 110px;
-    }
-
-    .keypad button {
-        padding: 16px;
-        font-size: 16px;
-    }
-}
-
-body {
-    position: relative;
-    overflow: hidden;
 }
 
 .confetti-container {
@@ -162,17 +146,9 @@ body {
     animation: floatUp linear infinite;
 }
 
-.confetti-container span:nth-child(odd) {
-    background: #ff4e91;
-}
-
-.confetti-container span:nth-child(even) {
-    background: #00ffcc;
-}
-
-.confetti-container span:nth-child(3n) {
-    background: #ffd700;
-}
+.confetti-container span:nth-child(odd) { background: #ff4e91; }
+.confetti-container span:nth-child(even) { background: #00ffcc; }
+.confetti-container span:nth-child(3n) { background: #ffd700; }
 
 .confetti-container span:nth-child(1) { left: 5%; animation-duration: 6s; animation-delay: 0s; }
 .confetti-container span:nth-child(2) { left: 15%; animation-duration: 8s; animation-delay: 2s; }
@@ -191,17 +167,20 @@ body {
 .confetti-container span:nth-child(15) { left: 90%; animation-duration: 7s; animation-delay: 0.8s; }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 
-.lock-card {
-    position: relative;
-    z-index: 2;
+@media (max-width: 350px) {
+    .keypad { gap: 10px; }
+    .pin-display { gap: 10px; }
+    .gif-wrapper { width: 90px; }
+}
+
+@media (min-width: 1024px) {
+    .lock-card {
+        max-width: 480px;
+        padding: 40px 35px;
+    }
+    .gif-wrapper { width: 160px; }
 }
