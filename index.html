@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday, Kuya James! </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="confetti-container">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="container">
+    <div class="lock-card">
+
+        <div class="gif-wrapper">
+            <div class="tenor-gif-embed"
+                data-postid="10878303427545084628"
+                data-share-method="host"
+                data-aspect-ratio="1"
+                data-width="100%">
+                <a href="https://tenor.com/view/hehe-gif-10878303427545084628">Hehe Sticker</a>
+            </div>
+        </div>
+
+        <h1>James Nagar</h1>
+        <p class="greeting">A little surprise is waiting for you!</p>
+        <p class="subtitle">Enter the PIN</p>
+
+        <div class="pin-display" id="pinDisplay">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="keypad">
+            <button onclick="addNumber('1')">1</button>
+            <button onclick="addNumber('2')">2</button>
+            <button onclick="addNumber('3')">3</button>
+            <button onclick="addNumber('4')">4</button>
+            <button onclick="addNumber('5')">5</button>
+            <button onclick="addNumber('6')">6</button>
+            <button onclick="addNumber('7')">7</button>
+            <button onclick="addNumber('8')">8</button>
+            <button onclick="addNumber('9')">9</button>
+            <button class="clear" onclick="clearPin()">C</button>
+            <button onclick="addNumber('0')">0</button>
+            <button class="backspace" onclick="removeLast()">⌫</button>
+        </div>
+        
+        <p class="clue">Clue: Your Birthmonth and Birthdate</p>
+        <p id="message"></p>
+
+    </div>
+</div>
+
+<script>
+let pin = "";
+
+function updateDisplay() {
+    const dots = document.querySelectorAll("#pinDisplay span");
+    dots.forEach((dot, index) => {
+        dot.classList.remove("active");
+        if (index < pin.length) {
+            dot.classList.add("active");
+        }
+    });
+}
+
+function addNumber(num) {
+    if (pin.length < 4) {
+        pin += num;
+        updateDisplay();
+        if (pin.length === 4) {
+            checkPin();
+        }
+    }
+}
+
+function removeLast() {
+    pin = pin.slice(0, -1);
+    updateDisplay();
+}
+
+function clearPin() {
+    pin = "";
+    updateDisplay();
+}
+
+function checkPin() {
+    const message = document.getElementById("message");
+
+    if (pin === "0304") {
+        message.style.color = "#00ff88";
+        message.textContent = "Nice!🫶✨";
+        setTimeout(() => {
+            window.location.href = "home.html";
+        }, 1000);
+    } else {
+        message.style.color = "#ff4d4d";
+        message.textContent = "Ikaw ba talaga si Kuya James?!🤨";
+        setTimeout(() => {
+            clearPin();
+            message.textContent = "";
+        }, 3000);
+    }
+}
+</script>
+
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+</body>
+</html>

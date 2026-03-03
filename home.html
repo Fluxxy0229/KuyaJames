@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Kuya James! </title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e1e2f, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    padding: 40px 25px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.gif-wrapper {
+    width: 150px;
+    margin: 0 auto 20px auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.yes {
+    background: #00ff88;
+    color: black;
+}
+
+.no {
+    background: #ff4d4d;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.final-btn {
+    background: #ff9f43;
+    color: black;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="gif-wrapper">
+        <div class="tenor-gif-embed"
+            data-postid="10878303427545084628"
+            data-share-method="host"
+            data-aspect-ratio="1"
+            data-width="100%">
+        </div>
+    </div>
+
+    <h2 id="question">Hi Mr. Celebrant 🎉</h2>
+
+    <div class="buttons" id="buttons">
+        <button class="yes" onclick="nextStep()">Continue</button>
+    </div>
+
+</div>
+
+<script>
+
+let step = 0;
+
+function nextStep(answer = null) {
+    const question = document.getElementById("question");
+    const buttons = document.getElementById("buttons");
+
+    step++;
+
+    if(step === 1) {
+        question.innerHTML = "Are you ready to open this? 👀";
+        buttons.innerHTML = `
+            <button class="yes" onclick="nextStep('yes')">Yes</button>
+            <button class="no" onclick="nextStep('no')">No</button>
+        `;
+    }
+
+    else if(step === 2 && answer === "no") {
+        question.innerHTML = "Are you sure you're not ready? 🥺 I'm sad now...";
+        buttons.innerHTML = `
+            <button class="yes" onclick="nextStep('yes')">Okay fine, I'm ready</button>
+            <button class="no" onclick="nextStep('no2')">Still no</button>
+        `;
+    }
+
+    else if(step === 2 && answer === "yes") {
+        question.innerHTML = "That's the spirit 😎";
+        buttons.innerHTML = `
+            <button class="yes" onclick="nextStep()">Continue</button>
+        `;
+    }
+
+    else if(step === 3 && answer === "no2") {
+        question.innerHTML = "WOW. Betrayal. On your own birthday? 😭";
+        buttons.innerHTML = `
+            <button class="yes" onclick="nextStep()">Okay okay I'm ready now</button>
+        `;
+    }
+
+    else if(step === 3 || step === 4) {
+        question.innerHTML = "Before we continue... are you prepared for something special? ✨";
+        buttons.innerHTML = `
+            <button class="yes" onclick="nextStep()">Yes I'm prepared</button>
+        `;
+    }
+
+    else if(step === 5) {
+        question.innerHTML = "This took effort okay 😌 appreciate it.";
+        buttons.innerHTML = `
+            <button class="yes" onclick="nextStep()">I appreciate it</button>
+        `;
+    }
+
+    else if(step === 6) {
+        question.innerHTML = "Alright Mr. Celebrant... 🎂";
+        buttons.innerHTML = `
+            <button class="final-btn" onclick="openSurprise()">Open Your Surprise 🎁</button>
+        `;
+    }
+}
+
+function openSurprise() {
+    window.location.href = "surprise.html";
+}
+
+</script>
+
+<script async src="https://tenor.com/embed.js"></script>
+
+</body>
+</html>

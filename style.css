@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e1e2f, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.lock-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.gif-wrapper {
+    width: 150px;
+    margin: 0 auto 15px auto;
+}
+
+.lock-card h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.greeting {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #ff9ecf;
+}
+
+.subtitle {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.pin-display {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.pin-display span {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+}
+
+.pin-display span.active {
+    background: #ff4e91;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.keypad button {
+    padding: 18px;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.keypad button:hover {
+    transform: scale(1.05);
+}
+
+.clear {
+    background: #ff4d4d;
+}
+
+.backspace {
+    background: #ff9f43;
+}
+
+.clear:hover {
+    background: #ff2e2e;
+}
+
+.backspace:hover {
+    background: #ff7f00;
+}
+
+.clue {
+    color: grey;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 0.7rem;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+@media (max-width: 480px) {
+    .lock-card {
+        padding: 30px 20px;
+    }
+
+    .gif-wrapper {
+        width: 110px;
+    }
+
+    .keypad button {
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+}
+
+.confetti-container {
+    position: fixed;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.confetti-container span {
+    position: absolute;
+    bottom: -20px;
+    width: 13px;
+    height: 5px;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+}
+
+.confetti-container span:nth-child(odd) {
+    background: #ff4e91;
+}
+
+.confetti-container span:nth-child(even) {
+    background: #00ffcc;
+}
+
+.confetti-container span:nth-child(3n) {
+    background: #ffd700;
+}
+
+.confetti-container span:nth-child(1) { left: 5%; animation-duration: 6s; animation-delay: 0s; }
+.confetti-container span:nth-child(2) { left: 15%; animation-duration: 8s; animation-delay: 2s; }
+.confetti-container span:nth-child(3) { left: 25%; animation-duration: 7s; animation-delay: 4s; }
+.confetti-container span:nth-child(4) { left: 35%; animation-duration: 9s; animation-delay: 1s; }
+.confetti-container span:nth-child(5) { left: 45%; animation-duration: 6s; animation-delay: 3s; }
+.confetti-container span:nth-child(6) { left: 55%; animation-duration: 10s; animation-delay: 5s; }
+.confetti-container span:nth-child(7) { left: 65%; animation-duration: 7s; animation-delay: 1.5s; }
+.confetti-container span:nth-child(8) { left: 75%; animation-duration: 8s; animation-delay: 2.5s; }
+.confetti-container span:nth-child(9) { left: 85%; animation-duration: 6s; animation-delay: 4.5s; }
+.confetti-container span:nth-child(10) { left: 95%; animation-duration: 9s; animation-delay: 0.5s; }
+.confetti-container span:nth-child(11) { left: 10%; animation-duration: 7s; animation-delay: 3.5s; }
+.confetti-container span:nth-child(12) { left: 30%; animation-duration: 8s; animation-delay: 1.2s; }
+.confetti-container span:nth-child(13) { left: 50%; animation-duration: 6s; animation-delay: 2.8s; }
+.confetti-container span:nth-child(14) { left: 70%; animation-duration: 9s; animation-delay: 4.2s; }
+.confetti-container span:nth-child(15) { left: 90%; animation-duration: 7s; animation-delay: 0.8s; }
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.lock-card {
+    position: relative;
+    z-index: 2;
+}
