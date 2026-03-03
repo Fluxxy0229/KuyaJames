@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Final Surprise 🎉</title>
+  <title>Happy Birthday, Kuya James!</title>
   <link rel="stylesheet" href="final.css" />
 </head>
 
 <body>
 
   <audio autoplay loop>
-    <source src="hbd.mp3" type="audio/mpeg" />
+    <source src="hbds.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="hearts"></div>
@@ -19,15 +19,20 @@
     <h1 id="typing"></h1>
 
     <div class="carousel">
+      <button class="carousel-btn prev" aria-label="Previous image">❮</button>
       <div class="carousel-track">
-        <img src="james1.jpg">
-        <img src="james2.jpg">
-        <img src="james3.jpg">
-        <img src="james4.jpg">
-        <img src="james1.jpg">
-        <img src="james2.jpg">
-        <img src="james3.jpg">
-        <img src="james4.jpg">
+        <img src="james1.jpg" alt="James 1">
+        <img src="james2.jpg" alt="James 2">
+        <img src="james3.jpg" alt="James 3">
+        <img src="james4.jpg" alt="James 4">
+      </div>
+      <button class="carousel-btn next" aria-label="Next image">❯</button>
+      
+      <div class="carousel-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
       </div>
     </div>
   </div>
@@ -53,6 +58,66 @@ function showThankYou() {
 }
 
 typeEffect();
+</script>
+
+<script>
+const track = document.querySelector(".carousel-track");
+const images = document.querySelectorAll(".carousel-track img");
+const dots = document.querySelectorAll(".dot");
+const prevBtn = document.querySelector(".carousel-btn.prev");
+const nextBtn = document.querySelector(".carousel-btn.next");
+
+let currentSlide = 0;
+const totalSlides = images.length;
+
+function updateCarousel() {
+  images.forEach((img, index) => {
+    img.classList.remove("active", "prev", "next");
+    
+    if (index === currentSlide) {
+      img.classList.add("active");
+    } else if (index === (currentSlide - 1 + totalSlides) % totalSlides) {
+      img.classList.add("prev");
+    } else if (index === (currentSlide + 1) % totalSlides) {
+      img.classList.add("next");
+    }
+  });
+
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentSlide);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+dots.forEach(dot => {
+  dot.addEventListener("click", (e) => {
+    currentSlide = parseInt(e.target.dataset.slide);
+    updateCarousel();
+  });
+});
+
+const carousel = document.querySelector(".carousel");
+
+let autoplayInterval = setInterval(nextSlide, 3000);
+
+carousel.addEventListener("mouseenter", () => clearInterval(autoplayInterval));
+carousel.addEventListener("mouseleave", () => {
+  autoplayInterval = setInterval(nextSlide, 3000);
+});
+
+updateCarousel();
 </script>
 
 <script>
