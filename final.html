@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Surprise 🎉</title>
+  <link rel="stylesheet" href="final.css" />
+</head>
+
+<body>
+
+  <audio autoplay loop>
+    <source src="hbd.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="hearts"></div>
+
+  <div class="container">
+    <h1 id="typing"></h1>
+
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="james1.jpg">
+        <img src="james2.jpg">
+        <img src="james3.jpg">
+        <img src="james4.jpg">
+        <img src="james1.jpg">
+        <img src="james2.jpg">
+        <img src="james3.jpg">
+        <img src="james4.jpg">
+      </div>
+    </div>
+  </div>
+
+<script>
+const message =
+"Happy 21st Birthday Kuya James! 🎂🎉 May this year bring you success, happiness, and everything you deserve.";
+
+let i = 0;
+
+function typeEffect() {
+  if (i < message.length) {
+    document.getElementById("typing").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  } else {
+    setTimeout(showThankYou, 10000);
+  }
+}
+
+function showThankYou() {
+  document.getElementById("thankyou").classList.add("show");
+}
+
+typeEffect();
+</script>
+
+<script>
+const heartContainer = document.querySelector(".hearts");
+
+for (let i = 0; i < 25; i++) {
+  const heart = document.createElement("span");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 6 + Math.random() * 6 + "s";
+  heart.style.fontSize = 15 + Math.random() * 20 + "px";
+  heartContainer.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
