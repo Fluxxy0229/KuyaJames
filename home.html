@@ -54,18 +54,18 @@
             <button class="yes" onclick="nextStep()">Continue</button>
         `;
         } else if (step === 3 && answer === "no2") {
-          question.innerHTML = "WOW. Betrayal. On your own birthday? 😭";
+          question.innerHTML = "WOW. Betrayal. On your own birthday? Report Kita!😭";
           buttons.innerHTML = `
             <button class="yes" onclick="nextStep()">Okay okay I'm ready now</button>
         `;
         } else if (step === 3 || step === 4) {
           question.innerHTML =
-            "Before we continue... are you prepared for something special? ✨";
+            "Before we continue... are you prepared for something special?";
           buttons.innerHTML = `
             <button class="yes" onclick="nextStep()">Yes I'm prepared</button>
         `;
         } else if (step === 5) {
-          question.innerHTML = "This took effort okay 😌 appreciate it.";
+          question.innerHTML = "This took effort okay, but don't expect to much.😌 ";
           buttons.innerHTML = `
             <button class="yes" onclick="nextStep()">I appreciate it</button>
         `;
